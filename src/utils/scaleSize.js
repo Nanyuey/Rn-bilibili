@@ -11,8 +11,11 @@ export default class Resolution {
     let designSize = { width: dwidth, height: dheight }
 
     let navHeight = Platform.OS === 'android' ? StatusBar.currentHeight : 64
-    let pxRatio = PixelRatio.get(dim)
-    let { width, height } = Dimensions.get(dim)
+    console.log('====================================')
+    console.log('StatusBar.currentHeight', StatusBar.currentHeight)
+    console.log('====================================')
+    let pxRatio = PixelRatio.get()
+    let { width, height } = Dimensions.get('window')
     if (dim != 'screen') height -= navHeight
     let w = PixelRatio.getPixelSizeForLayoutSize(width)
     let h = PixelRatio.getPixelSizeForLayoutSize(height)
@@ -47,7 +50,7 @@ export default class Resolution {
       <View
         {...p}
         style={{
-          marginTop: navHeight,
+          // marginTop: navHeight,
           width: width,
           height: height,
           backgroundColor: 'transparent',
